@@ -1,0 +1,144 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+void DiceOne(void);
+void DiceTwo(void);
+void DiceThree(void);
+void DiceFour(void);
+void DiceFive(void);
+void DiceSix(void);
+int Results(int array[], int ArraySize);
+
+void DiceOne(void)
+{
+	int rad, kolumn;
+	char one[3][4] = { { "   " },{ " * " },{ "   " } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", one[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void DiceTwo(void)
+{
+	int rad, kolumn;
+	char two[3][4] = { { "   " },{ "* *" },{ "   " } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", two[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void DiceThree(void)
+{
+	int rad, kolumn;
+	char three[3][4] = { { "*  " },{ " * " },{ "  *" } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", three[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void DiceFour(void)
+{
+	int rad, kolumn;
+	char four[3][4] = { { "* *" },{ "   " },{ "* *" } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", four[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void DiceFive(void)
+{
+	int rad, kolumn;
+	char five[3][4] = { { "* *" },{ " * " },{ "* *" } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", five[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void DiceSix(void)
+{
+	int rad, kolumn;
+	char six[3][4] = { { "* *" },{ "* *" },{ "* *" } };
+
+	for (rad = 0; rad < 3; rad++)
+	{
+		for (kolumn = 0; kolumn < 3; kolumn++)
+		{
+			printf("%c", six[rad][kolumn]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+int Results(int array[], int ArraySize)
+{
+	int sum = 0, i;
+	for (i = 0; i < ArraySize; i++)
+	{
+		sum = sum + array[i];
+	}
+	return sum;
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	char restart = 'y';
+	int i, array[5], Dices, ArraySize = 5, rad, kolumn, sum = 0;
+
+	while (restart == 'y')
+	{
+		for (i = 0; i < 5; i++)
+		{
+			array[i] = rand() % 6 + 1;
+
+
+			switch (array[i])
+			{
+			case 1: DiceOne(); break;
+			case 2: DiceTwo(); break;
+			case 3: DiceThree(); break;
+			case 4: DiceFour(); break;
+			case 5: DiceFive(); break;
+			case 6: DiceSix(); break;
+			}
+		}
+		sum = Results(array, ArraySize);
+
+		printf("Sum of %d + %d + %d + %d + %d = %d\n", array[0], array[1], array[2], array[3], array[4], sum);
+		
+		printf("Do you want to play again? y/n\n");
+		scanf_s(" %c", &restart);
+	}
+}
